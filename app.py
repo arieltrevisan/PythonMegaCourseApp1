@@ -1,20 +1,28 @@
-import helpers as h
+def main():
+    import helpers as h
+    import os
 
-print("Welcome to App1")
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-suggested_word = None
-data = h.load_data()
+    print("Welcome to App1")
 
-while True:
-    word = h.read_word(suggested_word)
+    suggested_word = None
+    data = h.load_data()
 
-    if word == h.exit_keyword:
-        break
+    while True:
+        word = h.read_word(suggested_word)
 
-    definitions = h.get_definitions(word, data)
+        if word == h.exit_keyword:
+            break
 
-    suggestions = h.get_suggestions(word, data, definitions)
+        definitions = h.get_definitions(word, data)
 
-    best_suggestion = h.get_best_suggestion(word, suggestions)
+        suggestions = h.get_suggestions(word, data, definitions)
 
-    suggested_word = h.display_definitions(word, definitions, best_suggestion)
+        best_suggestion = h.get_best_suggestion(word, suggestions)
+
+        suggested_word = h.display_definitions(word, definitions, best_suggestion)
+
+
+if __name__ == "__main__":
+    main()
